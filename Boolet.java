@@ -9,8 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Boolet extends Actor
 {
     GreenfootImage boolet = new GreenfootImage("boolet.png");
-    private int mouseX;
-    private int mouseY;
+    private int rotation;
     /**
      * Act - do whatever the Boolet wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -21,25 +20,38 @@ public class Boolet extends Actor
         boolet.scale(15,5);
     }
     
-    public Boolet(int mouseX, int mouseY)
+    public Boolet(int rotation)
     {
         setImage(boolet);
         boolet.scale(15,5);
-        this.mouseX = mouseX;
-        this.mouseY = mouseY;
+        this.rotation = rotation;
+        setRotation(rotation);
     }
     
     public void act()
     {
-        
+        shot();
     }
     
     public void shot()
     {
-        int xMovement = getX()
-        if (getX() < 0 || getX() > 600)
+        MyWorld gameWorld = (MyWorld) getWorld();
+        move(4);
+        if (getX() < 2)
         {
-            
+            gameWorld.removeObject(this);
+        }
+        else if (getX() > 598)
+        {
+            gameWorld.removeObject(this);
+        }
+        else if (getY() < 2)
+        {
+            gameWorld.removeObject(this);
+        }
+        else if (getY() > gameWorld.getHeight() - 2)
+        {
+            gameWorld.removeObject(this);
         }
     }
 }

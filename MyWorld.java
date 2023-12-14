@@ -19,9 +19,10 @@ public class MyWorld extends World
         super(600, 400, 1);
         
         Boolet boolet = new Boolet();
-        addObject(boolet, 300, 200);
         
         Person person = new Person();
         addObject(person, 300, 200);
+        
+        Enemy enemy = new Enemy();
     }
 }
