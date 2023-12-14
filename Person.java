@@ -69,7 +69,24 @@ public class Person extends Actor
     {
         MyWorld gameWorld = (MyWorld) getWorld();
         mouse = Greenfoot.getMouseInfo();
-        gameWorld.addObject(new Boolet(mouse.getX(), mouse.getY()), getX(), getY()); 
-        System.out.println(getRotation());
+        int m = 0;
+        int n = 0;
+        if (getRotation() > 0 && getRotation() < 90)
+        {
+            m = 20;
+        }
+        else if (getRotation() > 90 && getRotation() < 180)
+        {
+            n = 20;
+        }
+        else if (getRotation() > 180 && getRotation() < 270)
+        {
+            m = -20;
+        }
+        else if (getRotation() > 270 && getRotation() < 360)
+        {
+            n = -20;
+        }
+        gameWorld.addObject(new Boolet(getRotation()), getX(), getY()); 
     }
 }
