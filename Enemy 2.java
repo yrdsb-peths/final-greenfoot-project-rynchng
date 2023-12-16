@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Enemy extends SmoothMover
+public class Enemy extends Actor
 {
     GreenfootImage zombie = new GreenfootImage("zomb.png");
     private Person person;
@@ -24,6 +24,11 @@ public class Enemy extends SmoothMover
     public void act()
     {
         turnTowards(person.getX(), person.getY());
-        move(0.5);
+        //if (Greenfoot.getRandomNumber(20) < 8)
+        //{
+        //    
+        //}
+        move(1);
+        
     }
 }
