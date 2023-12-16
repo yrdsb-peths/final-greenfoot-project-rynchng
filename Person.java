@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Person extends Actor
+public class Person extends SmoothMover
 {
     GreenfootImage guy = new GreenfootImage("shoota.png");
     MouseInfo mouse;
@@ -46,22 +46,22 @@ public class Person extends Actor
     {
         if (Greenfoot.isKeyDown("w"))
         {
-            setLocation(getX(), getY() - 2);
+            setLocation(getX(), getY() - 2.5);
         }
         
         if (Greenfoot.isKeyDown("s"))
         {
-            setLocation(getX(), getY() + 2);
+            setLocation(getX(), getY() + 2.5);
         }
         
         if (Greenfoot.isKeyDown("a"))
         {
-            setLocation(getX() - 2, getY());
+            setLocation(getX() - 2.5, getY());
         }
         
         if (Greenfoot.isKeyDown("d"))
         {
-            setLocation(getX() + 2, getY());
+            setLocation(getX() + 2.5, getY());
         }
     }
     

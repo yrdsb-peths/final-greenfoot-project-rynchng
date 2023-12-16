@@ -8,7 +8,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MyWorld extends World
 {
-
+    Person person;
+    Enemy enemy;
+    Boolet boolet;
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -18,11 +20,44 @@ public class MyWorld extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1);
         
-        Boolet boolet = new Boolet();
+        boolet = new Boolet();
         
-        Person person = new Person();
+        person = new Person();
         addObject(person, 300, 200);
         
-        Enemy enemy = new Enemy();
+        createZombie();
+    }
+    
+    public void createZombie()
+    {
+        int ranX;
+        int ranY;
+        
+        if (Greenfoot.getRandomNumber(2) == 1)
+        {
+            if (Greenfoot.getRandomNumber(2) == 1)
+            {
+                ranX = Greenfoot.getRandomNumber(15);
+            }
+            else
+            {
+                ranX = 585 + Greenfoot.getRandomNumber(15);
+            }
+            ranY = Greenfoot.getRandomNumber(getHeight());
+        }
+        else
+        {
+            ranX = Greenfoot.getRandomNumber(getWidth());
+            if (Greenfoot.getRandomNumber(2) == 1)
+            {
+                ranY = Greenfoot.getRandomNumber(10);
+            }
+            else
+            {
+                ranY = 390 + Greenfoot.getRandomNumber(10);
+            }
+        }
+        enemy = new Enemy(person);
+        addObject(enemy, ranX, ranY);
     }
 }

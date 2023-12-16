@@ -37,7 +37,25 @@ public class Boolet extends Actor
     {
         MyWorld gameWorld = (MyWorld) getWorld();
         move(4);
-        if (getX() < 2)
+        if (isTouching(Enemy.class))
+        {
+            removeTouching(Enemy.class);
+            gameWorld.removeObject(this);
+            
+            int random = Greenfoot.getRandomNumber(8);
+            if (random == 1)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    gameWorld.createZombie();
+                }
+            }
+            else
+            {
+                gameWorld.createZombie();
+            }
+        }
+        else if (getX() < 2)
         {
             gameWorld.removeObject(this);
         }
