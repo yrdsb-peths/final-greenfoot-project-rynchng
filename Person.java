@@ -26,6 +26,7 @@ public class Person extends SmoothMover
         mouse = Greenfoot.getMouseInfo();
         rotate();
         traverse();
+        damage();
         
         if (Greenfoot.mouseClicked(null))
         {
@@ -88,5 +89,14 @@ public class Person extends SmoothMover
             n = -20;
         }
         gameWorld.addObject(new Boolet(getRotation()), getX(), getY()); 
+    }
+    
+    public void damage()
+    {
+        MyWorld gameWorld = (MyWorld) getWorld();
+        if (isTouching (Enemy.class))
+        {
+            gameWorld.decreaseLives(1);
+        }
     }
 }
