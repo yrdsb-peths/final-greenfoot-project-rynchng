@@ -26,7 +26,7 @@ public class Person extends SmoothMover
         mouse = Greenfoot.getMouseInfo();
         rotate();
         traverse();
-        damage();
+        //damage();
         
         if (Greenfoot.mouseClicked(null))
         {
