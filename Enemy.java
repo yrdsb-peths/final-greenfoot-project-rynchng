@@ -21,12 +21,14 @@ public class Enemy extends SmoothMover
         setImage(zombie);
         zombie.scale(70,40);
         this.person = person;
+        eatTimer.mark();
     }
     
     public void act()
     {
         turnTowards(person.getX(), person.getY());
         move(0.5);
+        eat();
     }
     
     //public void eat()
@@ -41,19 +43,27 @@ public class Enemy extends SmoothMover
     //    }
     //    eatTimer.mark();
     //}
-    
-    //public void eat()
-    //{
-        //MyWorld gameWorld = (MyWorld) getWorld();
-        //Person p = this.getOneIntersectingObject(Person.class);
-        //if (p != null)
-        //{
-        //    gameWorld.decreaseLives(1);
-        //    
-        //    if (gameWorld.getLives() < 0)
-        //    {
-        //        System.out.println("game over :(");
-        //    }
-        //}
-    //}
+    int count = 75;
+    int attackSpeed = 75;
+    public void eat()
+    {
+        MyWorld gameWorld = (MyWorld) getWorld();
+        Person p = (Person) this.getOneIntersectingObject(Person.class);
+        
+        if (isTouching (Person.class))
+        {
+            count++;
+        }
+        if (p != null && count >= attackSpeed)
+        {
+            gameWorld.decreaseLives(1);
+            count = 0;
+            
+            if (gameWorld.getLives() < 0)
+            {
+                GameOver endWorld = new GameOver();
+                Greenfoot.setWorld(endWorld);
+            }
+        }
+    }
 }
