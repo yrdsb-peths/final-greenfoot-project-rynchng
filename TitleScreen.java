@@ -8,7 +8,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class TitleScreen extends World
 {
-
+    Label title;
+    SmallBg sm;
     /**
      * Constructor for objects of class TitleScreen.
      * 
@@ -17,5 +18,28 @@ public class TitleScreen extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1); 
+        prepare();
+        
+        sm = new SmallBg();
+        addObject(sm, 80, 160);
+    }
+    
+    public void act()
+    {
+        if (Greenfoot.isKeyDown("space"))
+        {
+            MyWorld world = new MyWorld();
+            Greenfoot.setWorld(world);
+        }
+    }
+    
+    /**
+     * Prepare the world for the start of the program.
+     * That is: create the initial objects and add them to the world.
+     */
+    private void prepare()
+    {
+        title = new Label("Apocalypse", 80);
+        addObject(title,300,75);
     }
 }

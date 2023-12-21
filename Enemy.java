@@ -30,20 +30,7 @@ public class Enemy extends SmoothMover
         move(0.5);
         eat();
     }
-    
-    //public void eat()
-    //{
-    //    if (isTouching(Person.class))
-    //    {
-    //        if (eatTimer.millisElapsed() < 2000)
-    //        {
-    //            MyWorld gameWorld = (MyWorld) getWorld();
-    //            gameWorld.decreaseLives(1);
-    //        }
-    //    }
-    //    eatTimer.mark();
-    //}
-    int count = 75;
+    int count = 50;
     int attackSpeed = 75;
     public void eat()
     {
@@ -56,10 +43,10 @@ public class Enemy extends SmoothMover
         }
         if (p != null && count >= attackSpeed)
         {
-            gameWorld.decreaseLives(1);
+            gameWorld.decreaseHealth(1);
             count = 0;
             
-            if (gameWorld.getLives() < 0)
+            if (gameWorld.getHealth() <= 0)
             {
                 GameOver endWorld = new GameOver();
                 Greenfoot.setWorld(endWorld);
