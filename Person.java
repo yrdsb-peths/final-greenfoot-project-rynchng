@@ -24,13 +24,18 @@ public class Person extends SmoothMover
     public void act()
     {
         mouse = Greenfoot.getMouseInfo();
+        MyWorld world = (MyWorld) getWorld();
         rotate();
         traverse();
-        //damage();
         
         if (Greenfoot.mouseClicked(null))
         {
             shoot();
+        }
+        
+        if (Greenfoot.isKeyDown("b"))
+        {
+            world.createBomb();
         }
     }
     
@@ -89,14 +94,5 @@ public class Person extends SmoothMover
             n = -20;
         }
         gameWorld.addObject(new Boolet(getRotation()), getX(), getY()); 
-    }
-    
-    public void damage()
-    {
-        MyWorld gameWorld = (MyWorld) getWorld();
-        if (isTouching (Enemy.class))
-        {
-            gameWorld.decreaseLives(1);
-        }
     }
 }

@@ -11,12 +11,14 @@ public class MyWorld extends World
     Person person;
     Enemy enemy;
     Boolet boolet;
-    
+    Dynamite dyn;
     
     Label scoreLabel;
-    Label livesLabel;
+    Label healthLabel;
+    Label bombsLabel;
     public int score = 0;
-    public int lives = 5;
+    public int health = 5;
+    public int bombs = 0;
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -78,9 +80,11 @@ public class MyWorld extends World
     private void prepare()
     {
         scoreLabel = new Label("Score: " + score, 30);
-        addObject(scoreLabel,70,30);
-        livesLabel = new Label("Lives: " + lives, 30);
-        addObject(livesLabel,70,70);
+        addObject(scoreLabel,80,40);
+        healthLabel = new Label("Health: " + health, 30);
+        addObject(healthLabel,80,80);
+        bombsLabel = new Label("Bombs [B]: " + bombs, 30);
+        addObject(bombsLabel, 500, 40);
     }
     
     public void increaseScore(int x)
@@ -94,20 +98,26 @@ public class MyWorld extends World
         return score;
     }
     
-    public void increaseLives(int x)
+    public void increaseHealth(int x)
     {
-        lives = lives + x;
-        livesLabel.setValue("Lives: " + lives);
+        health = health + x;
+        healthLabel.setValue("Health: " + health);
     }
     
-    public void decreaseLives(int x)
+    public void decreaseHealth(int x)
     {
-        lives = lives - x;
-        livesLabel.setValue("Lives: " + lives);
+        health = health - x;
+        healthLabel.setValue("Health: " + health);
     }
     
-    public int getLives()
+    public int getHealth()
     {
-        return lives;
+        return health;
+    }
+    
+    public void createBomb()
+    {
+        dyn = new Dynamite(person.getX(), person.getY());
+        addObject(dyn, person.getX(), person.getY() + 40);
     }
 }
