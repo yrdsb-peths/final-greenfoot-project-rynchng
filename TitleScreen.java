@@ -9,6 +9,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class TitleScreen extends World
 {
     Label title;
+    Label tip;
+    Label controls;
+    Label aim;
     SmallBg sm;
     /**
      * Constructor for objects of class TitleScreen.
@@ -21,7 +24,7 @@ public class TitleScreen extends World
         prepare();
         
         sm = new SmallBg();
-        addObject(sm, 80, 160);
+        addObject(sm, 35, 365);
     }
     
     public void act()
@@ -41,5 +44,11 @@ public class TitleScreen extends World
     {
         title = new Label("Apocalypse", 80);
         addObject(title,300,75);
+        tip = new Label(" = Zombie Spawn Area", 35);
+        addObject(tip,205,365);
+        controls = new Label("Use W,A,S,D to move", 50);
+        addObject(controls,300,190);
+        aim = new Label("Look around with mouse", 50);
+        addObject(aim,300,250);
     }
 }
