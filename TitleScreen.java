@@ -12,6 +12,7 @@ public class TitleScreen extends World
     Label tip;
     Label controls;
     Label aim;
+    Label bombTip;
     SmallBg sm;
     /**
      * Constructor for objects of class TitleScreen.
@@ -45,10 +46,12 @@ public class TitleScreen extends World
         title = new Label("Apocalypse", 80);
         addObject(title,300,75);
         tip = new Label(" = Zombie Spawn Area", 35);
-        addObject(tip,205,365);
+        addObject(tip,225,365);
         controls = new Label("Use W,A,S,D to move", 50);
-        addObject(controls,300,190);
+        addObject(controls,300,180);
         aim = new Label("Look around with mouse", 50);
-        addObject(aim,300,250);
+        addObject(aim,300,235);
+        bombTip = new Label("You'll get a bomb every 15 kills", 40);
+        addObject(bombTip,300,290);
     }
 }
