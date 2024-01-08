@@ -17,7 +17,7 @@ public class SmallBg extends Actor
     public SmallBg()
     {
         setImage(bord);
-        bord.scale(60,60);
+        bord.scale(40,40);
     }
     public void act()
     {
