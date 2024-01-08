@@ -35,6 +35,8 @@ public class MyWorld extends World
 
         person = new Person();
         addObject(person, 300, 200);
+        
+        dyn = new Dynamite();
 
         createZombie();
         prepare();
@@ -71,6 +73,12 @@ public class MyWorld extends World
         }
         enemy = new Enemy(person);
         addObject(enemy, ranX, ranY);
+        
+        if (score % 2 == 0 && score != 0)
+        {
+            increaseBombs();
+        }
+        
     }
     
     /**
@@ -119,5 +127,22 @@ public class MyWorld extends World
     {
         dyn = new Dynamite(person.getX(), person.getY());
         addObject(dyn, person.getX(), person.getY() + 40);
+    }
+    
+    public int getBombs()
+    {
+        return bombs;
+    }
+    
+    public void increaseBombs()
+    {
+        bombs = bombs + 1;
+        bombsLabel.setValue("Bombs [B]: "+ bombs);
+    }
+    
+    public void decreaseBombs()
+    {
+        bombs = bombs - 1;
+        bombsLabel.setValue("Bombs [B]: "+ bombs);
     }
 }
