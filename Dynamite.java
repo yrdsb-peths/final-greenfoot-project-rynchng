@@ -11,45 +11,60 @@ public class Dynamite extends SmoothMover
     GreenfootImage[] dyna = new GreenfootImage[5];
     private int x;
     private int y;
-    SimpleTimer bombTimer = new SimpleTimer();
+    int frame;
+    GreenfootImage explosionArea = new GreenfootImage(100,100);
     /**
      * Act - do whatever the Dynamite wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public Dynamite()
-    {
-        
-    }
-    
     public Dynamite(int x, int y)
     {
         this.x = x;
         this.y = y;
         
-        setLocation(x,y - 50);
-        for (int i = 1; i <= dyna.length; i++)
+        setLocation(x,y);
+        for (int i = 0; i < dyna.length; i++)
         {
             dyna[i] = new GreenfootImage("dynamite" + i + ".png");
-            dyna[i].scale(45,45);
+            dyna[i].scale(180,180);
         }
-        bombTimer.mark();
-        setImage(dyna[0]);
+        setImage(dyna[frame]);
     }
+    
     public void act()
     {
         animateBomb();
     }
-    
-    int imageIndex = 0;
+    int time = 0;
     public void animateBomb()
     {
-        if (bombTimer.millisElapsed() > 400)
+        MyWorld world = (MyWorld) getWorld(); 
+        time++;
+        int delay = 30;
+        
+        if (time % delay == 0)
         {
-            return;
+            frame = (frame + 1) % dyna.length;
+            setLocation(x, getY() + 35);
+            setImage(dyna[frame]);
         }
-        bombTimer.mark();
-        setImage(dyna[imageIndex]);
-        imageIndex +=1;
-        setLocation(x, y + 0.4); 
+        
+        if (time == 180)
+        {
+            explode();
+            world.removeObject(this);
+        }
+    }
+    
+    public void explode()
+    {
+        MyWorld world = (MyWorld) getWorld();
+        explosionArea.drawOval(x,y,100,100);
+        explosionArea.setTransparency(0);
+        if (isTouching(Enemy.class))
+        {
+            removeTouching(Enemy.class);
+            world.increaseScore(1);
+        }
     }
 }

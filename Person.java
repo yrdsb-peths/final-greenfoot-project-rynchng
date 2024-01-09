@@ -33,9 +33,10 @@ public class Person extends SmoothMover
             shoot();
         }
         
-        if (Greenfoot.isKeyDown("b") && world.getBombs() > 1)
+        if (Greenfoot.isKeyDown("b") && world.getBombs() >= 1)
         {
             world.createBomb();
+            world.decreaseBombs();
         }
     }
     

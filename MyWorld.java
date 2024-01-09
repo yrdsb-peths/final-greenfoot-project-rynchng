@@ -35,8 +35,6 @@ public class MyWorld extends World
 
         person = new Person();
         addObject(person, 300, 200);
-        
-        dyn = new Dynamite();
 
         createZombie();
         prepare();
@@ -126,7 +124,7 @@ public class MyWorld extends World
     public void createBomb()
     {
         dyn = new Dynamite(person.getX(), person.getY());
-        addObject(dyn, person.getX(), person.getY() + 40);
+        addObject(dyn, person.getX(), person.getY() - 150);
     }
     
     public int getBombs()
