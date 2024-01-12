@@ -40,7 +40,7 @@ public class Dynamite extends SmoothMover
     {
         MyWorld world = (MyWorld) getWorld(); 
         time++;
-        int delay = 30;
+        int delay = 25;
         
         if (time % delay == 0)
         {
@@ -49,7 +49,7 @@ public class Dynamite extends SmoothMover
             setImage(dyna[frame]);
         }
         
-        if (time == 180)
+        if (time == 125)
         {
             explode();
             world.removeObject(this);
@@ -59,12 +59,9 @@ public class Dynamite extends SmoothMover
     public void explode()
     {
         MyWorld world = (MyWorld) getWorld();
-        explosionArea.drawOval(x,y,100,100);
-        explosionArea.setTransparency(0);
-        if (isTouching(Enemy.class))
-        {
-            removeTouching(Enemy.class);
-            world.increaseScore(1);
-        }
+        
+        world.removeObjects(getObjectsInRange(200, Enemy.class));
+        //world.increaseScore(1);
+        world.createZombie();
     }
 }

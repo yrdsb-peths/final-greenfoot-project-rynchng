@@ -71,12 +71,6 @@ public class MyWorld extends World
         }
         enemy = new Enemy(person);
         addObject(enemy, ranX, ranY);
-        
-        if (score % 2 == 0 && score != 0)
-        {
-            increaseBombs();
-        }
-        
     }
     
     /**

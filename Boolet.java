@@ -48,6 +48,10 @@ public class Boolet extends Actor
             removeTouching(Enemy.class);
             gameWorld.removeObject(this);
             gameWorld.increaseScore(1);
+            if (gameWorld.getScore() % 15 == 0 && gameWorld.getScore() != 0)
+            {
+                gameWorld.increaseBombs();
+            }
             
             int random = Greenfoot.getRandomNumber(x);
             if (random == 1)
