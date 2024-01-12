@@ -32,6 +32,12 @@ public class TitleScreen extends World
     {
         if (Greenfoot.isKeyDown("space"))
         {
+            removeObject(title);
+            removeObject(tip);
+            removeObject(controls);
+            removeObject(aim);
+            removeObject(bombTip);
+            removeObject(sm);
             MyWorld world = new MyWorld();
             Greenfoot.setWorld(world);
         }

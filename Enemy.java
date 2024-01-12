@@ -27,7 +27,7 @@ public class Enemy extends SmoothMover
     public void act()
     {
         turnTowards(person.getX(), person.getY());
-        move(0.5);
+        move(0.375);
         eat();
     }
     int count = 50;

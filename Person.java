@@ -10,6 +10,7 @@ public class Person extends SmoothMover
 {
     GreenfootImage guy = new GreenfootImage("shoota.png");
     MouseInfo mouse;
+    SimpleTimer boom = new SimpleTimer();
     /**
      * Act - do whatever the Person wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -19,6 +20,7 @@ public class Person extends SmoothMover
         setImage(guy);
         guy.scale(90,50);
         setRotation(0);
+        boom.mark();
     }
     
     public void act()
@@ -33,9 +35,11 @@ public class Person extends SmoothMover
             shoot();
         }
         
-        if (Greenfoot.isKeyDown("b") && world.getBombs() > 1)
+        if (Greenfoot.isKeyDown("b") && world.getBombs() >= 1 && boom.millisElapsed() > 2500)
         {
+            boom.mark();
             world.createBomb();
+            world.decreaseBombs();
         }
     }
     
