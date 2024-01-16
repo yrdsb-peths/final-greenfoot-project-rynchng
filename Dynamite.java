@@ -13,6 +13,7 @@ public class Dynamite extends SmoothMover
     private int y;
     int frame;
     GreenfootImage explosionArea = new GreenfootImage(100,100);
+    GreenfootSound explodeSound = new GreenfootSound("explode.mp3");
     /**
      * Act - do whatever the Dynamite wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -47,6 +48,11 @@ public class Dynamite extends SmoothMover
             frame = (frame + 1) % dyna.length;
             setLocation(x, getY() + 35);
             setImage(dyna[frame]);
+        }
+        
+        if (time == 100)
+        {
+            explodeSound.play();
         }
         
         if (time == 125)

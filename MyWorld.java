@@ -19,6 +19,7 @@ public class MyWorld extends World
     public int score = 0;
     public int health = 5;
     public int bombs = 0;
+    
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -35,7 +36,7 @@ public class MyWorld extends World
 
         person = new Person();
         addObject(person, 300, 200);
-
+        
         createZombie();
         prepare();
     }
@@ -81,8 +82,10 @@ public class MyWorld extends World
     {
         scoreLabel = new Label("Score: " + score, 30);
         addObject(scoreLabel,80,40);
+        
         healthLabel = new Label("Health: " + health, 30);
         addObject(healthLabel,80,80);
+        
         bombsLabel = new Label("Bombs [B]: " + bombs, 30);
         addObject(bombsLabel, 500, 40);
     }

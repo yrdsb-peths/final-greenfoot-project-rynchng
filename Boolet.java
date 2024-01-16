@@ -10,6 +10,7 @@ public class Boolet extends Actor
 {
     GreenfootImage boolet = new GreenfootImage("boolet.png");
     private int rotation;
+    GreenfootSound killSound = new GreenfootSound("hit.mp3");
     /**
      * Act - do whatever the Boolet wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -45,6 +46,7 @@ public class Boolet extends Actor
         }
         if (isTouching(Enemy.class))
         {
+            killSound.play();
             removeTouching(Enemy.class);
             gameWorld.removeObject(this);
             gameWorld.increaseScore(1);

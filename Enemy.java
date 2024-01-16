@@ -48,7 +48,7 @@ public class Enemy extends SmoothMover
             
             if (gameWorld.getHealth() <= 0)
             {
-                GameOver endWorld = new GameOver();
+                GameOver endWorld = new GameOver(gameWorld.getScore());
                 Greenfoot.setWorld(endWorld);
             }
         }
