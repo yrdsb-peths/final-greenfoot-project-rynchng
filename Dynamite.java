@@ -67,7 +67,18 @@ public class Dynamite extends SmoothMover
         MyWorld world = (MyWorld) getWorld();
         
         world.removeObjects(getObjectsInRange(200, Enemy.class));
-        //world.increaseScore(1);
-        world.createZombie();
+    
+        int random = Greenfoot.getRandomNumber(20);
+        if (random == 1)
+        {
+            for (int i = 0; i < 2; i++)
+            {
+                world.createZombie();
+            }
+        }
+        else
+        {
+            world.createZombie();
+        }
     }
 }
