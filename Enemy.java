@@ -10,6 +10,7 @@ public class Enemy extends SmoothMover
 {
     GreenfootImage zombie = new GreenfootImage("zomb.png");
     private Person person;
+    GreenfootSound hurt = new GreenfootSound("punch.mp3");
     
     SimpleTimer eatTimer = new SimpleTimer();
     /**
@@ -43,6 +44,7 @@ public class Enemy extends SmoothMover
         }
         if (p != null && count >= attackSpeed)
         {
+            hurt.play();
             gameWorld.decreaseHealth(1);
             count = 0;
             

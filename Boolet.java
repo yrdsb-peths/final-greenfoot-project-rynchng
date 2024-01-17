@@ -38,11 +38,11 @@ public class Boolet extends Actor
     {
         MyWorld gameWorld = (MyWorld) getWorld();
         move(4);
-        int x = 8;
+        int x = 10;
         
         if (gameWorld.getScore() == 40)
         {
-            x = 4;
+            x = 6;
         }
         if (isTouching(Enemy.class))
         {
@@ -50,7 +50,7 @@ public class Boolet extends Actor
             removeTouching(Enemy.class);
             gameWorld.removeObject(this);
             gameWorld.increaseScore(1);
-            if (gameWorld.getScore() % 15 == 0 && gameWorld.getScore() != 0)
+            if (gameWorld.getScore() % 1 == 0 && gameWorld.getScore() != 0)
             {
                 gameWorld.increaseBombs();
             }
