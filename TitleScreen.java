@@ -57,7 +57,7 @@ public class TitleScreen extends World
         addObject(controls,300,180);
         aim = new Label("Look around with mouse", 50);
         addObject(aim,300,235);
-        bombTip = new Label("You'll get a bomb every 15 kills", 40);
+        bombTip = new Label("You'll get a bomb every 30 kills", 40);
         addObject(bombTip,300,290);
     }
 }
